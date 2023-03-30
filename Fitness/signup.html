@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signup.css">
+  <link rel="icon" href="Img/icon.png">
+
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="index.html">Fitness<span>Hub</span></a>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="subscription.html">Subscription Plans</a></li>
+      <li class="active"><a href="login.html">Log In</a></li>
+    </ul>
+  </nav>  
+  <div class="container">
+    <h1>Sign Up</h1>
+    <form onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" >
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" >
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" >
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+  
+  <script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var confirm_password = document.getElementById("confirm-password").value;
+
+      
+      if (username == "") {
+        alert("Emri nuk mund te jet i zbrazet");
+        return false;
+      }
+
+      
+      if (email == "") {
+        alert("Email addresa nuk mund te jet e zbrazet");
+        return false;
+      } else {
+        var email_regex = /^\S+@\S+\.\S+$/;
+        if (!email_regex.test(email)) {
+          alert("Ju lutem shkruani nje email adress valide");
+          return false;
+        }
+      }
+
+      
+      if (password == "" || password.length <= 8) {
+        alert("Passwordi duhet te jet se paku 8 karaktere");
+        return false;
+      }
+
+      
+      if (confirm_password == "" || confirm_password != password) {
+        alert("Passwordi nuk perputhet");
+        return false;
+      }
+
+      
+      return true;
+    }
+  </script>
+</body>
+</html>
